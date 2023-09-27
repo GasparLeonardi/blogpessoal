@@ -48,10 +48,14 @@ namespace blogpessoal.Controllers
             if (!validarPostagem.IsValid)
             {
                 return StatusCode(StatusCodes.Status400BadRequest, validarPostagem);
-            } await _postagemService.Create(postagem);
-              return CreatedAtAction(nameof(GetById), new { id = postagem.Id }, postagem);
-        }
+            } 
+            var Resposta = await _postagemService.Create(postagem);
 
+            if (Resposta is null)
+                return BadRequest("Tema não encontrado");
+            
+            return CreatedAtAction(nameof(GetById), new { id = postagem.Id }, postagem);
+        }
         [HttpPut]
         public async Task<ActionResult> Update([FromBody] Postagem postagem)
         {
@@ -70,7 +74,7 @@ namespace blogpessoal.Controllers
 
             if (Resposta is null)
             {
-                return NotFound("Postagem não encontrada");
+                return NotFound("Postagem ou Tema não encontrados");
             } 
             return Ok(Resposta);
         }
