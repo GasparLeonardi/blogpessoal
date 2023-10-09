@@ -172,7 +172,7 @@ namespace blogpessoal
             //if (app.Environment.IsDevelopment())
             //{
                 app.UseSwagger();
-                //app.UseSwaggerUI();
+                app.UseSwaggerUI();
 
             // Swagger como Página Inicial (Home) na Nuvem
             if (app.Environment.IsProduction())
