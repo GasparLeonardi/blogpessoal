@@ -48,15 +48,17 @@ namespace blogpessoal.Service.Implements
         }
         public async Task<Postagem?> Create(Postagem postagem)
         {
+
             if (postagem.Tema is not null)
             {
-                var BuscaTema = await _context.Temas.FindAsync(postagem.Tema.Id);
+                var BuscaTema = await _context.Temas.FirstOrDefaultAsync(t => t.Id == postagem.Tema.Id);
 
-                if (BuscaTema is not null)
+                if (BuscaTema is null)
                     return null;
+
+                postagem.Tema = BuscaTema;
+
             }
-            
-            postagem.Tema = postagem.Tema is not null ? _context.Temas.FirstOrDefault(t => t.Id == postagem.Tema.Id) : null;
 
             postagem.Usuario = postagem.Usuario is not null ? await _context.Users.FirstOrDefaultAsync(u => u.Id == postagem.Usuario.Id) : null;
 
