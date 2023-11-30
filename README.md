@@ -22,7 +22,7 @@ API Web de um Blog Pessoal com funcionalidades CRUD para usuários, postagens e 
 
 ## Acesse o Blog Pessoal em Deploy via Vercel ou apenas a API via Render:
 
-    - Abra seu navegador e visite `https://vercel.com/gaspar-leonardis-projects/blog-pessoal/48ot4ZNfybzDJLPyD5zZLkfheF5w`.
+    - Abra seu navegador e visite `https://blog-pessoal-git-main-gaspar-leonardis-projects.vercel.app/`.
     - Abra seu navegador e visite `https://blogpessoal2-4n03.onrender.com`.
 
 
